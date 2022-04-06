@@ -1,0 +1,1 @@
+# The rights of these codes belongs to _From Coulouris, Dollimore and Kindberg Distributed Systems: Concepts and Design Edition 4, © Pearson Education 2005_
