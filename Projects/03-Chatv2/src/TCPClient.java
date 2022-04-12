@@ -11,13 +11,17 @@ public class TCPClient {
 	    try{
 	    	int serverPort = 7896;
 		   	s = new Socket(args[0], serverPort);
-		   	DataInputStream in = new DataInputStream(s.getInputStream());
-			DataOutputStream out = new DataOutputStream( s.getOutputStream());
-			br = new BufferedReader(new InputStreamReader(System.in));
+		   	//DataInputStream in = new DataInputStream(s.getInputStream());
+			//DataOutputStream out = new DataOutputStream( s.getOutputStream());
+			//br = new BufferedReader(new InputStreamReader(System.in));
+			//chat.communication(in, out, br, "Client"); // Establishing connection
 
 			System.out.println("Starting chat: " + "\n");
-			chat.communication(in, out, br, "Client"); // Establishing connection
-			
+			Sender sender = new Sender(s);
+			Receiver receiver = new Receiver(s);
+
+			new Thread(sender);
+			new Thread(receiver);
 	    } catch (UnknownHostException e){
 			System.out.println("Sock:"+e.getMessage()); 
 	    } catch (EOFException e){ 
