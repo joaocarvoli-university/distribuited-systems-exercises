@@ -5,6 +5,9 @@
 *.log
 
 *.class
+.classpath
+.project
+.vscode/
 
 out
 .idea
