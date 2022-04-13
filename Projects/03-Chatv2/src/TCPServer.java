@@ -10,12 +10,13 @@ public class TCPServer {
 		//System.out.println("Starting chat: " + "\n");
 		while(true) {
 			Socket clientSocket = listenSocket.accept();
-			//Connection c = new Connection(clientSocket);
+			Connection c = new Connection(clientSocket); // To accept multiple clients
+
+			// To send and receive how many messages you want
 			Sender sender = new Sender(clientSocket);
 			Receiver receiver = new Receiver(clientSocket);
-			//c.start();
-			new Thread(sender);
-			new Thread(receiver);
+			new Thread(sender); // A new thread do deal with out flow
+			new Thread(receiver); // A new thread do deal with in flow
 		}
 	} catch(IOException e) {System.out.println("Listen :"+e.getMessage());}
     }

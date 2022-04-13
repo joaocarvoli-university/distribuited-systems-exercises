@@ -20,7 +20,7 @@ class Connection extends Thread {
     }
     public void run(){
         try {
-
+            this.start();
             chat.communication(in, out, br, "Server"); // Establishing connection
 
         } catch(EOFException e){

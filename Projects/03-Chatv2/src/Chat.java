@@ -9,28 +9,19 @@ public class Chat {
                 toSend = br.readLine();
                 out.writeUTF(toSend);
                 out.flush();
-                Thread thread = new Thread(new Bidirectional(type, in));
+                toRead = in.readUTF();
                 thread.start();
                 
             }
         } else if(type.equals("Server")){
             while(!toRead.equals("Off")){
-                Thread thread = new Thread(new Bidirectional(type, in));
+                toRead = in.readUTF();
+                System.out.println("Client: " + toRead);
                 thread.start();
                 toSend = br.readLine();
                 out.writeUTF(toSend);
                 out.flush();
             }
         } else System.out.println("This type is invalid!");
-    }
-
-    private static class Bidirectional implements Runnable{
-        public Bidirectional(String type, DataInputStream in) throws IOException {
-            toRead = in.readUTF();
-            if(type.equals("Client")) System.out.println("Server: " + toRead);
-            else if(type.equals("Server")) System.out.println("Client: " + toRead);
-        }
-        public void run(){
-        }
     }
 }
