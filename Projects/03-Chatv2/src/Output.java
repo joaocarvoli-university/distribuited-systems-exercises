@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class Sender implements Runnable{
+// Returns a thread to deal with all output flow of TCP communication
+
+public class Output extends Thread{
     DataOutputStream out;
     Socket clientSocket;
     BufferedReader br;
 
-    public Sender(Socket aClientSocket){
+    public Output(Socket aClientSocket){
         try {
             clientSocket = aClientSocket;
             out = new DataOutputStream(clientSocket.getOutputStream());
@@ -27,7 +29,6 @@ public class Sender implements Runnable{
                 e.printStackTrace();
             }
             try {
-                assert message != null;
                 out.writeUTF(message);
             } catch (IOException e) {
                 e.printStackTrace();

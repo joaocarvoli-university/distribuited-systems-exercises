@@ -1,19 +1,21 @@
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.Socket;
 
-public class Receiver implements Runnable{
+// Returns a thread to deal with all input flow of TCP communication
+
+public class Input extends Thread{
     DataInputStream in;
     Socket clientSocket;
     BufferedReader br;
+    String whoIs;
 
-    public Receiver(Socket aClientSocket){
+    public Input(Socket aClientSocket, String name){
         try {
             clientSocket = aClientSocket;
+            whoIs = name;
             in = new DataInputStream(clientSocket.getInputStream());
-            br = new BufferedReader(new InputStreamReader(System.in));
         }catch(IOException e){
             System.out.println("Connection:"+e.getMessage());
         }
@@ -21,12 +23,12 @@ public class Receiver implements Runnable{
     public void run(){
         String message = null;
         while(true){
-            try {
+            try{
                 message = in.readUTF();
-            } catch (IOException e) {
+            } catch(IOException e){
                 e.printStackTrace();
             }
-            System.out.println("fulano: " + message);
+            System.out.println(whoIs + ": " + message);        
         }
     }
 }
