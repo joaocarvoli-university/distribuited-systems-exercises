@@ -1,5 +1,7 @@
 import java.net.*;
 import java.io.*;
+import ioflow.Input;
+import ioflow.Output;
 
 public class TCPClient {
 	public static void main (String[] args) {
