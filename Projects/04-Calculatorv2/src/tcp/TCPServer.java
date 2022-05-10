@@ -13,7 +13,7 @@ import services.CurrencyConverter;
 public class TCPServer {
     public static void main (String[] args) {
         try{
-            int serverPort = 7896;
+            int serverPort = 7897;
             ServerSocket listenSocket = new ServerSocket(serverPort);
             while(true) {
                 Socket clientSocket = listenSocket.accept();

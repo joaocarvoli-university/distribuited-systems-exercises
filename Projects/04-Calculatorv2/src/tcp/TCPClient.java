@@ -17,7 +17,7 @@ public class TCPClient {
 	public void execute(){
 		Socket s = null;
 		{ try{
-			int serverPort = 7896;
+			int serverPort = 7897;
 			try {
 				s = new Socket(serverAddress, serverPort);
 			} catch (IOException ex) {
