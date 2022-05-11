@@ -1,20 +1,20 @@
 package src.tcp;
 
-import java.net.*;
-import java.io.*;
-import data.DataHandlingCalculator;
-import data.DataHandlingConverse;
-import data.DataHandlingServices;
-import services.Calculator;
 import src.flow.*;
-import services.CurrencyConverter;
+import src.services.*;
+import src.data.*;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 import static java.lang.Thread.sleep;
 
 
 public class TCPServer {
     public static void main (String[] args) {
         try{
-            int serverPort = 7896;
+            int serverPort = 7897;
             ServerSocket listenSocket = new ServerSocket(serverPort);
             Dispatcher dispatcher;
             while(true) {

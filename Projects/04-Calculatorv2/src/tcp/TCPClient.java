@@ -17,7 +17,7 @@ public class TCPClient {
 	public void execute(){
 		Socket s = null;
 		{ try{
-			int serverPort = 7897;
+			int serverPort = 7896;
 			try {
 				s = new Socket(serverAddress, serverPort);
 			} catch (IOException ex) {
@@ -31,7 +31,7 @@ public class TCPClient {
 				throw new RuntimeException(ex);
 			}
 			dispatcher.sendRequest(message + "," + service);
-			System.out.println("The result of your operation is: "+ dispatcher.getResponse());
+			//System.out.println("The result of your operation is: "+ dispatcher.getResponse());
 
 		} catch (UnknownHostException e){System.out.println("Sock Client:"+e.getMessage());
 		} catch (EOFException e){ System.out.println("EOF Client:"+e.getMessage());

@@ -1,5 +1,5 @@
-package src.loadTest;
-import src.tcp.TCPClient;
+package loadTest;
+import tcp.*;
 
 public class Users {
     public static void main(String[] args){

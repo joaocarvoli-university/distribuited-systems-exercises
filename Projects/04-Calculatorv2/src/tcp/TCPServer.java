@@ -1,19 +1,16 @@
 package tcp;
 
+import data.*;
+import flow.*;
+import services.*;
+
 import java.net.*;
 import java.io.*;
-import data.DataHandlingCalculator;
-import data.DataHandlingConverse;
-import data.DataHandlingServices;
-import services.Calculator;
-import flow.*;
-import services.CurrencyConverter;
-
 
 public class TCPServer {
     public static void main (String[] args) {
         try{
-            int serverPort = 7897;
+            int serverPort = 7896;
             ServerSocket listenSocket = new ServerSocket(serverPort);
             while(true) {
                 Socket clientSocket = listenSocket.accept();
