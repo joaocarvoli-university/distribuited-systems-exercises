@@ -4,6 +4,17 @@ import java.util.Objects;
 
 public class Calculator {
 
+    private static Calculator calculator;
+
+    private Calculator(){}
+
+    public static Calculator getInstance(){
+        if(calculator == null){
+            calculator = new Calculator();
+        }
+        return calculator;
+    }
+
     public double doCalc(String operator, double firstNumber, double secondNumber){
         if(Objects.equals(operator, "Sum")) return getSum(firstNumber, secondNumber);
         else if(Objects.equals(operator, "Sub")) return getSub(firstNumber, secondNumber);

@@ -26,13 +26,13 @@ public class TCPServer {
 
                 if(service == 1)
                 {
-                    Calculator calc = new Calculator();
+                    Calculator calc = Calculator.getInstance();
                     DataHandlingCalculator dataHandled = new DataHandlingCalculator(message);
                     result = calc.doCalc(dataHandled.getOperator(),dataHandled.getValueA(), dataHandled.getValueB());
                 }
                 else if(service == 2)
                 {
-                    CurrencyConverter converter = new CurrencyConverter();
+                    CurrencyConverter converter = CurrencyConverter.getInstance();
                     DataHandlingConverse dataHandled = new DataHandlingConverse(message);
 
                     if((dataHandled.getCurrency()).equals("Dollar"))
@@ -44,6 +44,7 @@ public class TCPServer {
                         result = converter.RealToDollar(dataHandled.getRealValue(),dataHandled.getDollarValue());
                     }
                 }
+
                 sleep(100);
                 dispatcher.sendResponse(String.valueOf(result));
             }

@@ -38,13 +38,13 @@ class Connection extends Thread {
 
             if(service == 1)
             {
-                Calculator calc = new Calculator();
+                Calculator calc = Calculator.getInstance();
                 DataHandlingCalculator dataHandled = new DataHandlingCalculator(message);
                 result = calc.doCalc(dataHandled.getOperator(),dataHandled.getValueA(), dataHandled.getValueB());
             }
             else if(service == 2)
             {
-                CurrencyConverter converter = new CurrencyConverter();
+                CurrencyConverter converter = CurrencyConverter.getInstance();
                 DataHandlingConverse dataHandled = new DataHandlingConverse(message);
 
                 if((dataHandled.getCurrency()).equals("Dollar"))
@@ -57,10 +57,11 @@ class Connection extends Thread {
                 }
             }
 
+            sleep(100);
             dispatcher.sendResponse(String.valueOf(result));
 
         } catch(EOFException e) {System.out.println("EOF Server:"+e.getMessage());
-        } catch(IOException e) {System.out.println("IO Server:"+e.getMessage());
+        } catch(IOException | InterruptedException e) {System.out.println("IO Server:"+e.getMessage());
         } finally{
             try {
                 clientSocket.close();
